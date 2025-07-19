@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulmaca Ustası</title>
+    
+    <!-- Telegram Web App SDK (Rehber Bölüm 3.1) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Yükleme ekranı -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loader"></div>
+            <p>Bulmaca yükleniyor...</p>
+        </div>
+
+        <!-- Ana oyun ekranı -->
+        <div id="game-container" class="game-container hidden">
+            <!-- Üst bilgi çubuğu -->
+            <div class="header">
+                <div class="level-info">
+                    <span id="level-display">Seviye: 1</span>
+                    <span id="score-display">Skor: 0</span>
+                </div>
+                <div class="game-stats">
+                    <span id="moves-display">Hamle: 0</span>
+                    <span id="time-display">Süre: 00:00</span>
+                </div>
+            </div>
+
+            <!-- Bulmaca tahtası -->
+            <div id="puzzle-board" class="puzzle-board">
+                <!-- Bulmaca parçaları JavaScript ile oluşturulacak -->
+            </div>
+
+            <!-- Kontrol butonları -->
+            <div class="controls">
+                <button id="shuffle-btn" class="control-btn">🔀 Karıştır</button>
+                <button id="hint-btn" class="control-btn">💡 İpucu</button>
+                <button id="reset-btn" class="control-btn">🔄 Sıfırla</button>
+            </div>
+
+            <!-- İlerleme çubuğu -->
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="progress-text">0% Tamamlandı</span>
+            </div>
+        </div>
+
+        <!-- Oyun tamamlama modalı -->
+        <div id="completion-modal" class="completion-screen hidden">
+            <div class="completion-content">
+                <h2>🎉 Tebrikler!</h2>
+                <p>Bulmacayı başarıyla tamamladınız!</p>
+                
+                <div class="completion-stats">
+                    <div class="stat">
+                        <span class="stat-label">Skor:</span>
+                        <span id="final-score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Süre:</span>
+                        <span id="final-time" class="stat-value">00:00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Hamle:</span>
+                        <span id="final-moves" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <div class="completion-actions">
+                    <button id="next-level-btn" class="action-btn primary">
+                        ⏭️ Sonraki Seviye
+                    </button>
+                    <button id="play-again-btn" class="action-btn secondary">
+                        🔄 Tekrar Oyna
+                    </button>
+                    <button id="share-score-btn" class="action-btn secondary">
+                        📤 Skoru Paylaş
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ayarlar menüsü -->
+        <div id="settings-menu" class="settings-menu hidden">
+            <div class="settings-content">
+                <h3>⚙️ Ayarlar</h3>
+                
+                <div class="setting-item">
+                    <label for="sound-toggle">🔊 Ses Efektleri:</label>
+                    <input type="checkbox" id="sound-toggle" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="vibration-toggle">📳 Titreşim:</label>
+                    <input type="checkbox" id="vibration-toggle" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="difficulty-select">🎯 Zorluk:</label>
+                    <select id="difficulty-select">
+                        <option value="easy">Kolay (3x3)</option>
+                        <option value="medium">Orta (4x4)</option>
+                        <option value="hard">Zor (5x5)</option>
+                    </select>
+                </div>
+                
+                <button id="close-settings-btn" class="action-btn primary">
+                    ✅ Tamam
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="game.js"></script>
+</body>
+</html>
